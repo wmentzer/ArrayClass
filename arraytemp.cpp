@@ -4,22 +4,22 @@
 
 using namespace std;
 
-class Animal {
-public:
-    virtual string speak() const = 0;
+class Animal {					// The Animal class is considered "abstract" or
+public:						// a pure virtual method due to the "= 0"
+    virtual string speak() const = 0;		// meaning there is no implementation
 };
 
-class Cat : public Animal {
-public: 
-        virtual string speak() const;
-};
+class Cat : public Animal {			// Both classes, Cat and Dog are both subclasses
+public: 					// of Animal, where there are implementations
+        virtual string speak() const;		// of the function "speak()" which is inheritted
+};						// from the Animal parent class
 
 class Dog : public Animal {
 public: 
         virtual string speak() const;
 };
 
-template <class T>
+template <class T>				// The line with template <class T> in it 
 class Array {
 public:
 	Array(int size);
@@ -76,6 +76,8 @@ void Array<T>::fill(T k) {
 
 int main(int argc, char * args[]) {
 	Array<Animal*> s(2);
+
+	assert(s.size() == 2);
 
 	s[0] = new Cat();
 	s[1] = new Dog();
